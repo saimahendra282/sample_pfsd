@@ -1,9 +1,254 @@
 {% extends 'error_handler_base.html' %}
 
 {% block content %}
-<div class="text-center mt-5">
-    <h1>403, forbidden</h1>
-    <p>You need the proper permission to make that request.</p>
-    <a href="/" class="link">&LeftArrow; Return to the app</a>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Permission Denied</title>
+<style>
+  html {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+        background-color: black; /* upodated ** */
+      }
+
+      #wrapper {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+      }
+
+      .mango {
+        position: relative !important;
+        text-align: center;
+        overflow: hidden;
+        font-family: impact; /* updated ** */
+        color: black; /* updated** */
+        background-color: yellow; /*  updated** */
+        border: 2px solid black;
+        transition: opacity 0.2s linear;
+      }
+
+      .mango:hover {
+        opacity: 0.2 !important;
+      }
+
+      span {
+        position: relative;
+      }
+
+      .conveyer1 {
+        animation-name: shift;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes shift {
+        from {
+          left: 0%;
+        }
+
+        to {
+          left: 5%;
+        }
+      }
+
+      .conveyer2 {
+        animation-name: shift2;
+        animation-duration: 50s;
+        animation-timing-function: ease-out;
+        animation-iteration-count: infinite;
+        backface-visibility: hidden;
+      }
+
+      @keyframes shift2 {
+        0% {
+          left: -30%;
+        }
+
+        100% {
+          left: 100%;
+        }
+      }
+
+.stripes {
+background: repeating-linear-gradient(
+  45deg,
+  yellow,
+  yellow 25px,
+  black 25px,
+  black 50px
+)
+}
+  /* Add your CSS styles here */
+</style>
+</head>
+<body>
+  <div id="wrapper">
+    <div class="mango" id="a" style="opacity: 0.2;">
+      <span id="watera" class="conveyer2">
+        CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION
+      </span>
+    </div>
+    <div class="mango" id="e">
+      <span id="watere">
+        PERMISSION DENIED &nbsp &nbsp  &nbsp  &nbsp  &nbsp &nbsp  &nbsp &nbsp &nbsp PERMISSION DENIED  &nbsp &nbsp &nbsp &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp PERMISSION DENIED  &nbsp &nbsp &nbsp &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp PERMISSION DENIED  &nbsp &nbsp &nbsp &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp PERMISSION DENIED  &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp PERMISSION DENIED &nbsp  &nbsp &nbsp  &nbsp &nbsp &nbsp  &nbsp  &nbsp &nbsp PERMISSION DENIED   &nbsp &nbsp &nbsp
+      </span>
+    </div>
+    <div class="mango" id="f">
+      <span id="waterf">
+        CAUTION &nbsp CAUTION &nbsp CAUTION &nbsp CAUTION &nbsp CAUTION
+      </span>
+    </div>
+    <div class="mango stripes" id="g"><span id="waterg"></span></div>
+    <div class="mango" id="h" style="opacity: 0.2;">
+      <span id="waterh" class="conveyer2">
+        CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &
+&nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION &nbsp &nbsp &nbsp &nbsp &nbsp CAUTION
+      </span>
+    </div>
+  </div>
+  <script>
+   let mango = document.querySelectorAll(".mango");
+      let y = mango.length;
+      let z = -1;
+      let delay = 0;
+      let min, max;
+
+      window.onload = (event) => {
+//
+        // alert("refresh to see different combinations! Best viewed on desktop")
+//
+        let span = document.querySelectorAll("span");
+
+        mango.forEach(function (input) {
+          styles(input);
+          input.addEventListener("mouseover", function hover() {
+            setTimeout(decrement, 200);
+            function decrement() {
+              input.style.zIndex = z;
+              z = z - 10;
+            }
+          });
+        });
+
+        span.forEach(function (input) {
+          setTimeout(slide, delay);
+          delay = delay + 50;
+          function slide() {
+            input.classList.add("conveyer1");
+          }
+        });
+
+        if (iOS() == true) {
+          document.getElementById("waterb").classList.remove("conveyer2"); // or else too glitchy
+        }
+      };
+
+      window.parent.document.body.onkeyup = function (e) {
+        if (e.keyCode == 32) {
+          darkMode();
+          console.log("whiat");
+        }
+      };
+
+      if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      ) {
+        document.onclick = function (event) {
+          if (event.target.id === "wrapper") {
+            darkMode();
+          }
+        };
+      }
+
+      function iOS() {
+        return (
+          [
+            "iPad Simulator",
+            "iPhone Simulator",
+            "iPod Simulator",
+            "iPad",
+            "iPhone",
+            "iPod"
+          ].includes(navigator.platform) ||
+          // iPad on iOS 13 detection
+          (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+        );
+      }
+
+      function darkMode() {
+        mango.forEach(function (input) {
+          input.style.color = "black";
+          input.style.border = "2px solid #fd6c9e";
+        });
+      }
+
+      function styles(input) {
+        input.style.top = randomTopPosition() + "%";
+        input.style.left = randomLeftPosition() + "%";
+        input.style.width = "200%";
+        input.style.height = "2rem"; // updated **
+        input.style.webkitTransform =
+          "rotate(" + randomSign() + randomRotation() + "deg" + ")";
+        input.style.fontSize = input.style.height;
+        input.style.lineHeight = input.style.height;
+      }
+
+      function randomTopPosition() {
+        min = -50;
+        max = 50;
+        let randomTopPosition = Math.floor(
+          Math.random() * (max - min + 1) + min
+        );
+        return randomTopPosition;
+      }
+
+      function randomLeftPosition() {
+        min = -50;
+        max = 0; // updated **
+        let randomLeftPosition = Math.floor(
+          Math.random() * (max - min + 1) + min
+        );
+
+        return randomLeftPosition;
+      }
+
+      function randomRotation() {
+        min = -20; // updated **
+        max = 20; // updated **
+        let randomRotation = Math.floor(Math.random() * (max - min + 1) + min);
+        return randomRotation;
+      }
+
+      function randomSign() {
+        signsArray = ["+", "-"];
+        min = 0;
+        max = 1;
+        let randomIndex = Math.floor(Math.random() * (max - min + 1) + min);
+        let randomSign = signsArray[randomIndex];
+        return randomSign;
+      }
+
+      function random(y) {
+        let x = Math.floor(Math.random() * (y + 0 + 1));
+        return x;
+      }
+
+  </script>
+</body>
+</html>
+
 {% endblock %}
